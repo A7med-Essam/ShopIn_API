@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopIn_API.Models;
 
 namespace ShopIn_API.Migrations
 {
     [DbContext(typeof(ShopInContext))]
-    partial class ShopInContextModelSnapshot : ModelSnapshot
+    [Migration("20210923020513_edit-PromoCodes_v0.2")]
+    partial class editPromoCodes_v02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

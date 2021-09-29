@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ShopIn_API.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,10 @@ namespace ShopIn_API.ViewModel
 
         public string ProfileImageUrl { get; set; }
         public string ImagePublicId { get; set; }
-
+        public ApplicationUser()
+        {
+            promoCodes = new List<PromoCode>();
+        }
+        public virtual List<PromoCode> promoCodes { get; set; }
     }
 }

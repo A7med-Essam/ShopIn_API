@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopIn_API.Models;
 
 namespace ShopIn_API.Migrations
 {
     [DbContext(typeof(ShopInContext))]
-    partial class ShopInContextModelSnapshot : ModelSnapshot
+    [Migration("20210922201537_PromoCodes_Init")]
+    partial class PromoCodes_Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,24 +165,6 @@ namespace ShopIn_API.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("ShopIn_API.Models.ApplicationUserPromoCode", b =>
-                {
-                    b.Property<int>("PromoCodeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("isUsedPromoCode")
-                        .HasColumnType("bit");
-
-                    b.HasKey("PromoCodeId", "ApplicationUserId");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("ApplicationUserPromoCodes");
                 });
 
             modelBuilder.Entity("ShopIn_API.Models.ProductRate", b =>
@@ -424,25 +408,6 @@ namespace ShopIn_API.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ShopIn_API.Models.ApplicationUserPromoCode", b =>
-                {
-                    b.HasOne("ShopIn_API.ViewModel.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShopIn_API.Models.PromoCode", "PromoCode")
-                        .WithMany()
-                        .HasForeignKey("PromoCodeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("PromoCode");
                 });
 
             modelBuilder.Entity("ShopIn_API.Models.ProductRate", b =>
